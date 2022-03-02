@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.Challenge.TextView"
+        android:text="@string/error"
+        android:textAlignment="center"/>
+
+    <TextView
+        android:id="@+id/tv_error_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        style="@style/Widget.Challenge.TextView"
+        android:textSize="12sp"
+        android:text="@string/no_more_headlines"
+        android:textAlignment="textStart"/>
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_below="@+id/tv_error_message"
+        android:text="@string/ok"/>
+
+</RelativeLayout>
