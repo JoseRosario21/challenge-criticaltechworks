@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:padding="20dp">
 
     <TextView
@@ -19,7 +20,7 @@
         android:layout_below="@+id/tv_title"
         style="@style/Widget.Challenge.TextView"
         android:textSize="12sp"
-        android:text="@string/no_more_articles"
+        tools:text="error trying to connect to ..."
         android:textAlignment="textStart"/>
 
     <Button

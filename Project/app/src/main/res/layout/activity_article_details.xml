@@ -1,93 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="8dp"
     tools:context=".activities.article_details.ArticleDetailsActivity">
 
     <RelativeLayout
-        android:id="@+id/card_view"
+        android:id="@+id/rl_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:padding="8dp">
+        android:layout_marginStart="10dp">
 
         <ImageView
             android:id="@+id/iv_back_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_back_arrow"
-            android:layout_margin="10dp"
-            android:importantForAccessibility="no"/>
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_back_arrow" />
 
         <TextView
             android:id="@+id/tv_news_source"
             style="@style/Widget.Challenge.TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:fontFamily="sans-serif-black"
             android:textAlignment="center"
+            android:textSize="32sp"
             tools:text="BBC News" />
-
-        <TextView
-            android:id="@+id/tv_author_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_news_source"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            tools:text="Author Name" />
-
-        <TextView
-            android:id="@+id/tv_published_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_news_source"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            tools:text="02/03/2022" />
-
-        <TextView
-            android:id="@+id/tv_headline_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_news_source"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="48dp"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_published_date"
-            tools:text="Zero movie review" />
-
-        <ImageView
-            android:id="@+id/iv_headline_image"
-            android:layout_width="350dp"
-            android:layout_height="150dp"
-            android:layout_below="@+id/tv_headline_title"
-            android:layout_marginTop="16dp"
-            android:importantForAccessibility="no"
-            android:src="@drawable/ic_loading"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_headline_title" />
-
-        <TextView
-            android:id="@+id/tv_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/iv_headline_image"
-            android:layout_marginHorizontal="8dp"
-            android:layout_marginTop="16dp"
-            android:textAlignment="textStart"
-            android:textSize="18sp"
-            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at nisl ut diam viverra varius. Nulla scelerisque et tortor eu placerat. Etiam elit erat, rhoncus vel massa sed, mollis gravida felis. Cras porttitor nisl ultrices dignissim commodo. Duis et nunc ut turpis varius venenatis ac at nisl. Nulla ultrices, arcu vel mollis aliquam, metus metus consectetur tellus, eget vehicula metus sapien in urna. Phasellus ultrices ornare sapien eu cursus. Nullam vitae interdum quam.Ut facilisis purus quis eros mattis, quis finibus magna aliquam. Phasellus ut ligula non arcu semper sagittis et nec mi" />
 
     </RelativeLayout>
 
-</ScrollView>
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_header">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_article_date_and_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp">
+
+                <ImageView
+                    android:id="@+id/iv_author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_author"
+                    android:importantForAccessibility="no"/>
+
+                <TextView
+                    android:id="@+id/tv_author_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/iv_author"
+                    android:textSize="18sp"
+                    android:layout_marginStart="5dp"
+                    tools:text="Author Name"
+                    tools:ignore="RelativeOverlap" />
+
+                <ImageView
+                    android:id="@+id/iv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/tv_published_date"
+                    android:src="@drawable/ic_date"
+                    android:importantForAccessibility="no"/>
+
+                <TextView
+                    android:id="@+id/tv_published_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textSize="18sp"
+                    android:layout_marginStart="5dp"
+                    tools:text="02/03/2022" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_headline_title"
+                style="@style/Widget.Challenge.TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_article_date_and_author"
+                android:layout_marginTop="24dp"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="Zero movie review" />
+
+            <ImageView
+                android:id="@+id/iv_headline_image"
+                android:layout_width="350dp"
+                android:layout_height="250dp"
+                android:layout_below="@+id/tv_headline_title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_loading" />
+
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="24dp"
+                android:layout_below="@+id/iv_headline_image"
+                android:textAlignment="textStart"
+                android:textSize="18sp"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at nisl ut diam viverra varius. Nulla scelerisque et tortor eu placerat. Etiam elit erat, rhoncus vel massa sed, mollis gravida felis. Cras porttitor nisl ultrices dignissim commodo. Duis et nunc ut turpis varius venenatis ac at nisl. Nulla ultrices, arcu vel mollis aliquam, metus metus consectetur tellus, eget vehicula metus sapien in urna. Phasellus ultrices ornare sapien eu cursus. Nullam vitae interdum quam.Ut facilisis purus quis eros mattis, quis finibus magna aliquam. Phasellus ut ligula non arcu semper sagittis et nec mi" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
+
+
+
+
+
