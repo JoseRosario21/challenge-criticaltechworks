@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">News</string>
     <string translatable="false" name="news_api_key">bc8080c28d66441fbfd7f287e2dd87f7</string>
-    <string name="no_more_headlines">No more headlines…</string>
-    <string name="bbc_news">BBC News</string>
+    <string name="no_more_articles">No more articles…</string>
     <string name="error">Error</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
+    <string name="loading">Loading…</string>
+
 </resources>

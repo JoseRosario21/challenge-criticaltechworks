@@ -21,6 +21,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions 'NewsApp'
+    productFlavors {
+        source1 {
+            resValue 'string', 'news_source_id', 'bbc-news'
+            resValue 'string', 'news_source_name', 'BBC News'
+        }
+
+        source2 {
+            resValue 'string', 'news_source_id', 'fox-news'
+            resValue 'string', 'news_source_name', 'Fox News'
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -31,8 +45,13 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'net.danlew:android.joda:2.10.12.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.google.code.gson:gson:2.8.8'
     implementation 'org.jdeferred.v2:jdeferred-core:2.0.0'
-    implementation 'com.github.KwabenBerko:News-API-Java:1.0.0'
     implementation("com.squareup.picasso:picasso:2.8")
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

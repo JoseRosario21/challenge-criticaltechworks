@@ -1,4 +1,4 @@
-package com.jrosario.challenge.criticaltechworks.interfaces;
+package com.jrosario.challenge.criticaltechworks.utils;
 
 public interface OnItemClickListener {
     void onItemClick(int pos);

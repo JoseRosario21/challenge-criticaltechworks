@@ -2,8 +2,10 @@ package com.jrosario.challenge.criticaltechworks.activities.main;
 
 import android.content.Context;
 
+import com.jrosario.challenge.criticaltechworks.R;
 import com.jrosario.challenge.criticaltechworks.network.APIData;
-import com.kwabenaberko.newsapilib.models.request.TopHeadlinesRequest;
+
+import java.util.HashMap;
 
 public class MainPresenter implements MainContract.Presenter {
     private MainContract.View mView;
@@ -20,15 +22,13 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void getNewsHeadlines(int page) {
-        TopHeadlinesRequest topHeadlinesRequest = new TopHeadlinesRequest.Builder()
-                .sources("bbc-news")
-                .pageSize(2)
-                .page(page)
-                .build();
+    public void getNewsHeadlines() {
+        HashMap<String, String> params = new HashMap<>();
+        params.put("apiKey", context.getString(R.string.news_api_key));
+        params.put("sources", context.getString(R.string.news_source_id));
 
-        APIData.getNewsHeadlines(context, topHeadlinesRequest)
-                .done(response -> mView.addArticles(response.getArticles()))
+        APIData.getNewsHeadlines(params)
+                .done(response -> mView.addArticles(response))
                 .fail(mView::apiRequestError);
     }
 

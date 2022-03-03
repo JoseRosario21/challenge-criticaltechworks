@@ -1,35 +1,31 @@
 package com.jrosario.challenge.criticaltechworks.network;
 
-import android.content.Context;
-
-import com.jrosario.challenge.criticaltechworks.BuildConfig;
-import com.jrosario.challenge.criticaltechworks.R;
-import com.kwabenaberko.newsapilib.NewsApiClient;
-import com.kwabenaberko.newsapilib.models.request.TopHeadlinesRequest;
-import com.kwabenaberko.newsapilib.models.response.ArticleResponse;
+import com.google.gson.JsonObject;
+import com.jrosario.challenge.criticaltechworks.models.Article;
 
 import org.jdeferred2.Promise;
 import org.jdeferred2.impl.DeferredObject;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class APIData {
-    public static Promise<ArticleResponse, Throwable, ?> getNewsHeadlines(Context context, TopHeadlinesRequest topHeadlinesRequest) {
-        DeferredObject<ArticleResponse, Throwable, ?> deferredObject = new DeferredObject<>();
+    public static Promise<ArrayList<Article>, String, ?> getNewsHeadlines(HashMap<String, String> params) {
+        DeferredObject<ArrayList<Article>, String, ?> deferredObject = new DeferredObject<>();
 
-        NewsApiClient newsApiClient = new NewsApiClient(context.getString(R.string.news_api_key));
+        NewsTask.getTopHeadlines(params, new Callback<JsonObject>() {
+            @Override
+            public void returnResult(JsonObject result) {
+                JSONFilesManager.getArticlesFromJSON(result)
+                        .done(deferredObject::resolve)
+                        .fail(deferredObject::reject);
+            }
 
-        newsApiClient.getTopHeadlines(topHeadlinesRequest,
-                new NewsApiClient.ArticlesResponseCallback() {
-                    @Override
-                    public void onSuccess(ArticleResponse response) {
-                        deferredObject.resolve(response);
-                    }
-
-                    @Override
-                    public void onFailure(Throwable throwable) {
-                        deferredObject.reject(throwable);
-                    }
-                }
-        );
+            @Override
+            public void returnError(String message) {
+                deferredObject.reject(message);
+            }
+        });
 
         return deferredObject;
     }

@@ -19,7 +19,7 @@
         android:layout_below="@+id/tv_title"
         style="@style/Widget.Challenge.TextView"
         android:textSize="12sp"
-        android:text="@string/no_more_headlines"
+        android:text="@string/no_more_articles"
         android:textAlignment="textStart"/>
 
     <Button
