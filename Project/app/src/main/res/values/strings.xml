@@ -2,6 +2,6 @@
     <string name="app_name">News</string>
     <string name="error">Error</string>
 
-    <string translatable="false" name="ok">OK</string>
-    <string translatable="false" name="news_api_key">bc8080c28d66441fbfd7f287e2dd87f7</string>
+    <string name="ok" translatable="false">OK</string>
+    <string name="news_api_key" translatable="false">bc8080c28d66441fbfd7f287e2dd87f7</string>
 </resources>
